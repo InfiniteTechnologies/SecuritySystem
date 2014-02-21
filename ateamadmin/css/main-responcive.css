@@ -1,0 +1,112 @@
+
+/**responcive css */
+
+@media (min-width: 768px)
+{
+	.main-navigation 
+	{
+		position: absolute;
+		width: 225px;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.main-content {
+	margin-left: 225px;
+	}
+	ul.main-navigation-menu > li.active > a .selected:before {
+				display: block;
+				height: 41px;
+				position: absolute;
+				right: -6px;
+				top: -1px;
+				width: 11px;
+				content: "\e072";
+				font-family: 'Glyphicons Halflings';
+				line-height: 41px;
+				font-size: 24px;
+				color: blue;
+	}
+	.navigation-small .main-navigation {
+width: 35px !important;
+z-index: 1000;
+}
+.navigation-small ul.main-navigation-menu > li > a > .title {
+display: none;
+}
+.navigation-small  ul.main-navigation-menu li a .glyphicon-chevron-right {
+display:none;
+}
+.navigation-small .main-content {
+margin-left: 35px !important;
+}
+.navigation-small .navigation-toggler {
+	margin-right: 3px !important;
+	margin-left: 3px !important;
+}
+.navigation-small ul.main-navigation-menu > li > ul.sub-menu {
+		display: none !important;
+		padding-bottom: 10px !important;
+	}
+.navigation-small ul.main-navigation-menu li > ul.sub-menu > li > a {
+		padding-left: 24px !important;
+	}
+	.navigation-small ul.main-navigation-menu > li > ul.sub-menu > li > ul.sub-menu > li > a {
+		padding-left: 40px !important;
+	}
+	.navigation-small ul.main-navigation-menu > li > ul.sub-menu > li > ul.sub-menu > li > ul.sub-menu > li > a {
+		padding-left: 60px !important;
+	}
+	.navigation-small ul.main-navigation-menu > li:hover {
+		width: 225px;
+		position: relative;
+	}
+	.navigation-small ul.main-navigation-menu > li:hover .selected {
+		display: none;
+	}
+	.navigation-small ul.main-navigation-menu > li:hover > a:after {
+		content: "";
+		bottom: -1px;
+		position: absolute;
+		left: 35px;
+		top: -1px;
+		width: 14px;
+		background: url(../images/menu-white-arrow.png) left center no-repeat;
+	}
+	.navigation-small ul.main-navigation-menu > li:hover > a .title {
+		padding-left: 30px;
+	}
+	.navigation-small ul.main-navigation-menu > li:hover .title {
+		display: inline;
+	}
+	.navigation-small ul.main-navigation-menu > li:hover > ul.sub-menu {
+		width: 189px;
+		position: absolute;
+		z-index: 1000;
+		left: 36px;
+		margin-top: 0;
+		top: 100%;
+		display: block !important;
+	}	
+}
+@media (max-width: 767px)
+{
+	.navbar-tools {
+margin-left: -25px;
+margin-right: -25px;
+padding: 0 15px;
+border-top: 1px solid #080808;
+}
+.navbar-tools .navbar-right {
+	float: right;
+	margin:0px;
+}
+.main-conatiner
+{
+	margin-top: 92px;
+}
+.navigation-toggler {
+
+	display:none;
+}
+}

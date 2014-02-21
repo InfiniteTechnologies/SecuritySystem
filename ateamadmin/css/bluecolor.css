@@ -1,0 +1,109 @@
+@charset "utf-8";
+/* CSS Document */
+body, .main-container, .footer, .main-navigation, ul.main-navigation-menu > li > ul.sub-menu, .navigation-small ul.main-navigation-menu > li > ul.sub-menu {
+background-color: #F6F6F6 !important;
+}
+.navbar-inverse
+{
+	background: rgba(255, 255, 255, 0.9);
+	border-color: #C8C7CC;
+}
+
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+	background: #D9D9D9;
+color: #555555;
+}
+ul.main-navigation-menu > li.active > ul.sub-menu > li.active > a {
+	background: #D9D9D9;
+	color: #555555;
+}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+background: #D9D9D9;
+color: #555555;
+}
+ul.main-navigation-menu li > ul.sub-menu > li.open > a, ul.main-navigation-menu li > ul.sub-menu > li.active > a, ul.main-navigation-menu li > ul.sub-menu > li > a:hover {
+color: #000000 !important;
+background: #D9D9D9 !important;
+text-decoration:none;
+}
+a:hover , .navbar-inverse .navbar-nav > li > a:hover
+{
+	background-color:#eee;
+	color:#1c1c1c;
+}
+.navbar-inverse .navbar-brand i, .navbar-inverse .navbar-brand:hover i {
+	color: #007AFF;
+}
+
+.myiconcss
+{
+	
+	color:#999999 !important;
+}
+leftboardiconactive
+{
+	color:#33F;
+}
+.leftboardicon
+{
+	color:#999999;
+}
+.main-conatiner
+{
+		background:#F6F6F6;
+}
+.notifications_icon
+{
+	
+background:#007AFF;
+color:#fff;
+}
+
+ul.main-navigation-menu > li.open > a, 
+ul.main-navigation-menu > li > a:hover, 
+ul.main-navigation-menu > li:hover > a {
+	background-color: #D9D9D9;
+}
+ul.main-navigation-menu > li.active > a {
+	background: #007AFF !important;
+	border-top: none !important;
+	color: #fff;
+}
+ul.main-navigation-menu > li a {
+	border-bottom: none;
+	border-top-color: #C8C7CC;
+	color: #555555;
+}
+ul.main-navigation-menu > li > a {
+border: 0 none;
+display: block;
+font-size: 14px;
+font-weight: 300;
+margin: 0;
+padding: 10px 15px;
+position: relative;
+text-decoration: none;
+border-bottom: 1px solid #DDDDDD;
+border-top: 1px solid #FFFFFF;
+}
+ul.main-navigation-menu > li.active > a .selected:before
+{
+	color:blue;
+}
+.navbar-inverse .navbar-toggle .icon-bar
+{
+	background-color:#eee !important;
+}
+
+
+
+
+@media (max-width: 767px)
+{
+.navbar-tools {
+background: rgba(255, 255, 255, 0.9);
+border-top:1px solid #C8C7CC;
+
+}
+}
