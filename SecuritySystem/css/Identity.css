@@ -1,0 +1,105 @@
+﻿.item1
+{
+	margin-left:30px;
+	margin-right: 30px; 
+	margin-top: 21px; 
+	margin-bottom: 20px;
+}
+
+.heading1
+{
+	font-family: Calibri;
+	margin: 0; 
+	font-weight: bold; 
+	text-transform: uppercase;
+    font-size: 15px;	
+}
+
+.heading2
+{
+	font-size: 12px;
+	margin: 0; 
+	font-family: Calibri;
+}
+
+.heading3
+{
+	font-size: 11px; 
+	margin: 2px;
+	font-family: Calibri; 
+	letter-spacing: 1px;
+}
+
+.haeding4
+{
+	font-size: 11px; 
+	margin: 0; 
+	font-family: Calibri;
+}
+
+.heading5
+{
+	font-family: Calibri; 
+	margin: 0; 
+	font-weight: bold; 
+	text-transform: uppercase;
+    text-align: center; 
+    font-size: 12px; 
+    letter-spacing: 1px;
+}
+
+.heading6
+{
+	font-family: Calibri; 
+	margin: 0; 
+	font-size: 11px;
+}
+
+.td1
+{
+	width: 70px; 
+	padding-left: 10px;
+}
+
+.td2
+{
+	width: 10px; 
+	text-align: center;
+}
+
+.td3
+{
+	width: 75px; 
+	vertical-align: top;
+}
+
+.td4
+{
+	width: 75px; 
+	text-align: center;
+}
+
+.td5
+{
+	word-wrap: true; 
+	height: 30px; 
+	vertical-align: top;
+}
+
+.lastheading
+{
+	background-color: #FFFFFF;
+    border-collapse: collapse; 
+    border-color: #999999; 
+    border-style: none; 
+    border-width: 1px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.lastheading1
+{
+	text-align: center; 
+	background-color: #CCCCCC;
+    font-family: Verdana, Arial, Helvetica, sans-serif; 
+    color: #000000;
+}

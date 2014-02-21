@@ -1,0 +1,120 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Untitled Page</title>
+      <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+   
+    <link href="css/frontstyle.css" rel="stylesheet" type="text/css" />
+    <link href="css/menustyle.css" rel="stylesheet" type="text/css" />
+    <link href="css/scrollbar.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    
+      <script type="text/javascript">
+         function setdata()
+                {
+                 var val1 = $("#ctl00_ContentPlaceHolder2_routesoucetxtbox").val();
+                 var val2 = $("#ctl00_ContentPlaceHolder2_routedestinationtxtbox").val();
+                 var val3 = val1 + "-" + val2;
+                 $("#ctl00_ContentPlaceHolder2_TextBox3").val(val3);
+                }
+    </script>
+    <script type="text/javascript">
+    $(function () {
+    $('input.alphanumeric').keyup(function () {
+        if (this.value.match(/[^a-zA-Z0-9 ]/g)) {
+            this.value = this.value.replace(/[^a-zA-Z0-9 ]/g, '');
+        }
+    });
+});
+
+    
+    </script>
+
+</head>
+<body>
+   
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div>
+     <div id="wrapper">
+        <div id="pageheader">
+            <div id="logo">
+               <%-- <a href="#">
+                    <img src="images/innovia.png" height="52px" alt="Innovia" />
+                </a>--%>
+                
+                <h1 class="h2">Security System</h1>
+                <div class="welcome">
+                    <span class="user">Welcome <a href="#">
+                        <asp:Label ID="lbluser" runat="server" Text=""></asp:Label>
+                    </a></span><span class="user">| <a href="#" title="Change Date">
+                        <asp:Label ID="lbldate" runat="server" Text=""></asp:Label>
+                    </a></span><%--<a href="#" class="btn ui-corner-all">--%>
+                       
+<%--                    </a><a href="Default.aspx" class="btn ui-corner-all-logout"><span class="ui-icon ui-icon-power">
+                    </span>Logout</a>--%>
+                    
+                    <asp:LinkButton ID="LinkButton1" runat="server" onclick="LinkButton1_Click" style="color:white;text-decoration:none;position:relative;top:10px;">Logout</asp:LinkButton>
+                    <%--    <asp:Button ID="Button1" runat="server" Text="Logout" onclick="Button1_Click" style="background-color:Black;color:White"/>--%>
+                   <span> </span>
+                   
+                </div>
+            </div>
+              <div id="menupanel">
+                <ul class="menu">
+                    
+                    <li><a href="Home.aspx">Home
+                        
+                       
+                    </li>
+                    
+                     <li><a>Manage Master</a>
+                        
+                        <ul class="menustyle">
+                           
+                         <li style="padding-left:15px;padding-top:5px"><a href="ManageCategory.aspx" >Manage Category</a></li>
+                            <li style="padding-left:15px;padding-top:5px"><a href="ManageGuards.aspx">Manage Guards</a></li>
+                            <li style="padding-left:15px;padding-top:5px"><a href="ManageCllient.aspx">Manage Clients</a></li>
+<%--                            <li style="padding-left:15px;padding-top:5px"><a href="AddVehicle.aspx">Add Vehicle</a></li>
+--%>                       
+                                                
+                        </ul>
+                       
+                    </li>
+                    
+                 
+                    
+                   
+                </ul>
+            </div>
+            <br />
+            <br />
+            
+            <div id="uppercontent">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="lowercontent">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+                
+                </asp:ContentPlaceHolder>
+            </div>
+            <div id="footer">
+                <div class="innerdiv">
+                    Copyright © 2013 <a href="http://www.infinitetechnologies.in/" target="_blank">Global
+                        Infinite Technologies Pvt. Ltd.</a> All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </div>
+       
+    </div>
+    </form>
+</body>
+</html>

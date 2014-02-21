@@ -1,0 +1,225 @@
+﻿.rightstrip
+{
+	border-right: solid 1px #dedede;
+	padding-left:10px;
+}
+
+.rightstrip .rightdiv
+{
+	color:#93caff;
+	font-size:14px;
+	float:right;
+	margin-top:15px;
+	width:88%;
+}
+
+.rightstrip1 .rightdiv1
+{
+	color:#93caff;
+	font-size:14px;
+	float:right;
+	margin-top:-22px;
+	width:88%;
+}
+
+
+.rightstrip .leftdiv
+{
+	float:left;
+	width:10%;
+}
+
+.tblview
+{
+	padding:10px;
+    border:1px solid #dedede;
+    background-color:White;
+}
+
+.tblview h2
+{
+	padding:0;
+	margin:0;
+	font-size:15px;
+	color:#454545;
+	display:block;
+}
+
+.tblview table
+{
+	border-top:Solid 4px #cbcbcb;
+	border-left:Solid 1px #cbcbcb;
+	margin-top:15px;
+}
+
+
+.tblview table tr td
+{
+	border-bottom:Solid 1px #cbcbcb;
+	border-right:Solid 1px #cbcbcb;
+	padding:10px;
+}
+
+
+.highlight
+{
+	background-color:#e3f0ff;
+	border-left:Solid 6px #f9f9f9;
+	color:#444444;
+}
+
+.txtbox
+{
+	border: solid 1px #ababab;
+	background: #ffffff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color: #454545;
+	padding: 1px 2px;
+	margin: 0px 3px;
+	height: 23px;
+	width: 320px;
+}
+
+.txtboxaddress
+{
+	border: solid 1px #ababab;
+	background: #ffffff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color: #454545;
+	padding: 1px 2px;
+	margin: 0px 3px;
+	height: 60px;
+	width: 950px;
+}
+
+.txtboxnotes
+{
+	border: solid 1px #ababab;
+	background: #ffffff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color: #454545;
+	padding: 1px 2px;
+	margin: 0px 3px;
+	height: 30px;
+	width: 450px;
+}
+
+.txtboxsearch
+{
+	border: solid 1px #ababab;
+	background: #ffffff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color: #454545;
+	padding: 1px 2px;
+	margin: 0px 3px;
+	width: 220px;
+}
+.roletbl
+{
+	background-color:#fff;
+}
+
+.tddivision
+{
+	width:205px;	
+}
+
+.rolelabel
+{
+	margin:3px;
+}
+
+
+.icon_edit
+{
+	background-image:url('../images/glyphicons-halflings.png');	
+	background-position:-360px -144px;
+	width:16px;
+	height:16px;
+}
+
+.icon_delete
+{
+	background-image:url('../images/glyphicons-halflings.png');	
+	background-position:-456px 0;
+	width:16px;
+	height:16px;
+}
+
+.icon_info
+{
+	background-image:url('../images/glyphicons-halflings.png');	
+	background-position:-120px -96px;
+	width:16px;
+	height:16px;
+}
+
+.sgrid
+{
+	width:100%;
+	line-height:28px;
+	border: 1px solid #ccc;
+}
+.hide
+{
+	display:none;
+}
+
+.sgrid th
+{
+	background-color: #C0C0C0;
+	height:28px;
+	text-transform:uppercase;
+	text-shadow: 0 1px 0 #fff;
+	text-align:left;
+	padding-left:15px;
+	
+}
+.sgrid td
+{
+	text-align:left;
+	padding-left:15px;
+	padding-top:5px;
+}
+.tblview1
+{
+    background-color:White;
+    border:0px;
+}
+
+.tblview1 table
+{
+	margin-top:0px;
+	border:0px
+}
+
+.tblview1 table tr td
+{
+	border:0px;
+}
+
+.searchdropdwn
+{
+	width: 140px;
+	padding:4px;
+	height:28px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	outline: 0;
+	border: 1px solid #909090;
+	color: #666;
+	font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+	font-size: 13px;
+	margin: 0;
+	margin-left:3px;
+}
+
