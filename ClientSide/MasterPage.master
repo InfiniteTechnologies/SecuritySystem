@@ -219,10 +219,7 @@
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
     	                        <img src="images_admin/admin.png" class="circle-img" height="18px" width="18px" alt="">
 	                            <span class="username">
-	                                <% if (Session["id"] != null)
-                                    {
-                                        Response.Write(Session["id"].ToString());
-                                    } %>
+	                                
 	                            </span>
                                 <b class="caret"></b>
                             </a>
