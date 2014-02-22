@@ -1,11 +1,11 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 body, .main-container, .footer, .main-navigation, ul.main-navigation-menu > li > ul.sub-menu, .navigation-small ul.main-navigation-menu > li > ul.sub-menu {
-background-color: #F6F6F6 !important;
+background-color: #2a3542 !important;
 }
 .navbar-inverse
 {
-	background: rgba(255, 255, 255, 0.9);
+	background: #2a3542;
 	border-color: #C8C7CC;
 }
 
@@ -51,7 +51,7 @@ leftboardiconactive
 }
 .main-conatiner
 {
-		background:#F6F6F6;
+		background:#2a3542;
 }
 .notifications_icon
 {

@@ -126,6 +126,12 @@
                     </asp:DropDownList>
                 </td>
             </tr>
+
+             <tr>
+                <td class="cell">GST Number</td>
+                <td>
+                    <asp:TextBox ID="txtboxGST" runat="server" CssClass="form-control"></asp:TextBox></td>
+            </tr>
             
             <tr>
                 <td class="cell">Email Id</td>
@@ -169,7 +175,7 @@
                     <asp:TextBox ID="TextCity" runat="server" CssClass="form-control"></asp:TextBox></td>
             </tr>
             
-                        <tr>
+            <tr>
                 <td class="cell">State</td>
                 <td>
                     <asp:TextBox ID="TextStt" runat="server" CssClass="form-control"></asp:TextBox></td>
@@ -188,8 +194,8 @@
                 <td>
                     <asp:DropDownList ID="DropDownList1" runat="server">
                         <asp:ListItem Value="0">Select Id Proof</asp:ListItem>
-                        <asp:ListItem Value="1">Voter Id</asp:ListItem>
-                        <asp:ListItem Value="2">Aadhar card</asp:ListItem>
+                        <asp:ListItem Value="1">Passport</asp:ListItem>
+                        <asp:ListItem Value="2">SSN</asp:ListItem>
                         <asp:ListItem Value="3">Driving License</asp:ListItem>
                     </asp:DropDownList>
                   </td>

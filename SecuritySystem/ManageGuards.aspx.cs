@@ -19,6 +19,7 @@ public partial class ManageClients : System.Web.UI.Page
     {
         TextGname.Text = "";
         DdlCategory.SelectedIndex = 0;
+        txtboxGST.Text = "";
         TextMail.Text = "";
         TextUser.Text = "";
         TextBoxPass.Text = "";
@@ -69,6 +70,7 @@ public partial class ManageClients : System.Web.UI.Page
         obj.cmd.Parameters.AddWithValue("@idd", id);
         obj.cmd.Parameters.AddWithValue("@Gname",TextGname.Text);
         obj.cmd.Parameters.AddWithValue("@cat", DdlCategory.SelectedValue);
+        obj.cmd.Parameters.AddWithValue("@tax", txtboxGST.Text);
 
         obj.cmd.Parameters.AddWithValue("@ml", TextMail.Text);
         obj.cmd.Parameters.AddWithValue("@usr", TextUser.Text);
@@ -81,8 +83,8 @@ public partial class ManageClients : System.Web.UI.Page
         obj.cmd.Parameters.AddWithValue("@pic", FileUpload1.FileName);
         obj.cmd.Parameters.AddWithValue("@proof",DropDownList1.SelectedItem.Text);
         obj.cmd.Parameters.AddWithValue("@idno", TextId.Text);
-        obj.ExecuteQueries("insert into ManageGuards (id,GuardName,F_CategoryId,GuardEmail,GuardUserid,GuardPass,AddressLine1,AddressLine2,contactno,City,State,GuardPhoto,GuardIdProof,GuardIdNo)" +
-        "values(@idd,@Gname,@cat,@ml,@usr,@pas,@No,@Add1,@add2,@cty,@stt,@pic,@proof,@idno)");
+        obj.ExecuteQueries("insert into ManageGuards (id,GuardName,F_CategoryId,GuardTaxNo,GuardEmail,GuardUserid,GuardPass,AddressLine1,AddressLine2,contactno,City,State,GuardPhoto,GuardIdProof,GuardIdNo)" +
+        "values(@idd,@Gname,@cat,@tax,@ml,@usr,@pas,@No,@Add1,@add2,@cty,@stt,@pic,@proof,@idno)");
         GridView1.DataBind();
         reset();
     }
@@ -104,9 +106,6 @@ public partial class ManageClients : System.Web.UI.Page
             DropDownList1.SelectedValue = drr["GuardIdProof"].ToString();
            
             TextId.Text = drr["GuardIdNo"].ToString();
-
-           
-
         } 
 
     }
