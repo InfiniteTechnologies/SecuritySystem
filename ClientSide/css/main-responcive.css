@@ -43,6 +43,7 @@ margin-left: 35px !important;
 .navigation-small .navigation-toggler {
 	margin-right: 3px !important;
 	margin-left: 3px !important;
+    margin-bottom: 70px;
 }
 .navigation-small ul.main-navigation-menu > li > ul.sub-menu {
 		display: none !important;

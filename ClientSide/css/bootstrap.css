@@ -3566,9 +3566,9 @@ input[type="button"].btn-block {
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
-  color: #262626;
+  color: #fff;
   text-decoration: none;
-  background-color: #f5f5f5;
+  background-color: #1CAF9A;
 }
 
 .dropdown-menu > .active > a,
@@ -5163,7 +5163,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .label-warning {
-  background-color: #f0ad4e;
+  background-color: #D2322D;
+  margin-right: -10px !important;
+}
+
+.label-warning:hover {
+    margin-right: 0px !important;
 }
 
 .label-warning[href]:hover,

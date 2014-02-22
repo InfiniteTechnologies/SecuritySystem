@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 .container {
 max-width: none !important;
@@ -31,7 +31,7 @@ float: right;
 margin-right: 6px;
 font-size: 14px;
 font-weight: lighter;
-color:#428bca;
+color:#428BCA;
 }
 
 ul.main-navigation-menu li > ul.sub-menu {
@@ -64,14 +64,13 @@ padding: 0;
 }
 .navigation-toggler {
 		cursor: pointer;
-		height: 30px;
-		margin-left: 175px;
 		margin-top: 10px;
 		margin-bottom: 10px;
 		color: #555;
 		line-height: 30px;
 		text-align: center;
-		background: #EEE;
+		color: #fff;
+        font-size: 22px;
 }
 div.drop-down-wrapper {
 height: 250px;
