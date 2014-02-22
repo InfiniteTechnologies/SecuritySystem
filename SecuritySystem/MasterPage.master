@@ -56,8 +56,7 @@
                         <asp:Label ID="lbldate" runat="server" Text=""></asp:Label>
                     </a></span><%--<a href="#" class="btn ui-corner-all">--%>
                        
-<%--                    </a><a href="Default.aspx" class="btn ui-corner-all-logout"><span class="ui-icon ui-icon-power">
-                    </span>Logout</a>--%>
+
                     
                     <asp:LinkButton ID="LinkButton1" runat="server" onclick="LinkButton1_Click" style="color:white;text-decoration:none;position:relative;top:10px;">Logout</asp:LinkButton>
                     <%--    <asp:Button ID="Button1" runat="server" Text="Logout" onclick="Button1_Click" style="background-color:Black;color:White"/>--%>

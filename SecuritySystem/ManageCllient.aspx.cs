@@ -32,21 +32,39 @@ public partial class ManageCllient : System.Web.UI.Page
     }
     protected void ButtonAdd_Click(object sender, EventArgs e)
     {
-        int id=obj.GenerateID("ManageClients");
-        obj.cmd.Parameters.AddWithValue("@idd", id);
-           obj.cmd.Parameters.AddWithValue("@cmpny",TextCOmpny.Text);
-           obj.cmd.Parameters.AddWithValue("@clint",TextClient.Text);
-           obj.cmd.Parameters.AddWithValue("@ml",TextMail.Text);
-           obj.cmd.Parameters.AddWithValue("@pas",TextPass.Text);
-           obj.cmd.Parameters.AddWithValue("@No",TextNo.Text);
-           obj.cmd.Parameters.AddWithValue("@Add1",TextADd1.Text);
-           obj.cmd.Parameters.AddWithValue("@add2",TextAdd2.Text);
-           obj.cmd.Parameters.AddWithValue("@cty",TextCity.Text);
-           obj.cmd.Parameters.AddWithValue("@stt",TextState.Text);
-           obj.ExecuteQueries("insert into ManageClients (Id,CompanyName,ClientName,ClientEmail,ClientPass,ContactNo,AddressLine1,AddressLine2,City,State)" +
-            "values(@idd,@cmpny,@clint,@ml,@pas,@No,@Add1,@add2,@cty,@stt)");
-           GridView1.DataBind();
-           reset();
+        Page.Validate("A");
+        if (Page.IsValid)
+        {
+            
+            bool chck1 = obj.getdata("select * from ManageClients where ClientName='" + TextClient.Text + "'");
+            if (chck1 == true)
+            {
+                LabelErr.Text = "Record already exists! Choose another";
+            }
+            else
+            {
+                int id = obj.GenerateID("ManageClients");
+                obj.cmd.Parameters.AddWithValue("@idd", id);
+                obj.cmd.Parameters.AddWithValue("@cmpny", TextCOmpny.Text);
+                obj.cmd.Parameters.AddWithValue("@clint", TextClient.Text);
+                obj.cmd.Parameters.AddWithValue("@ml", TextMail.Text);
+                obj.cmd.Parameters.AddWithValue("@pas", TextPass.Text);
+                obj.cmd.Parameters.AddWithValue("@No", TextNo.Text);
+                obj.cmd.Parameters.AddWithValue("@Add1", TextADd1.Text);
+                obj.cmd.Parameters.AddWithValue("@add2", TextAdd2.Text);
+                obj.cmd.Parameters.AddWithValue("@cty", TextCity.Text);
+                obj.cmd.Parameters.AddWithValue("@stt", TextState.Text);
+                obj.ExecuteQueries("insert into ManageClients (Id,CompanyName,ClientName,ClientEmail,ClientPass,ContactNo,AddressLine1,AddressLine2,City,State)" +
+                 "values(@idd,@cmpny,@clint,@ml,@pas,@No,@Add1,@add2,@cty,@stt)");
+                GridView1.DataBind();
+                reset();
+                LabelErr.Text = "Record inserted successfully";
+            }
+        }
+        else
+        {
+            LabelErr.Text = "Fill all the fields";
+        }
     }
 
     protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)
@@ -65,22 +83,43 @@ public partial class ManageCllient : System.Web.UI.Page
     protected void ButtonReset_Click(object sender, EventArgs e)
     {
         reset();
+        LabelErr.Text = "";
     }
     protected void ButtonUpdate_Click(object sender, EventArgs e)
-    {       
-        obj.cmd.Parameters.AddWithValue("@cmpny", TextCOmpny.Text);
-        obj.cmd.Parameters.AddWithValue("@clint", TextClient.Text);
-        obj.cmd.Parameters.AddWithValue("@ml", TextMail.Text);
-        obj.cmd.Parameters.AddWithValue("@pas", TextPass.Text);
-        obj.cmd.Parameters.AddWithValue("@No", TextNo.Text);
-        obj.cmd.Parameters.AddWithValue("@Add1", TextADd1.Text);
-        obj.cmd.Parameters.AddWithValue("@add2", TextAdd2.Text);
-        obj.cmd.Parameters.AddWithValue("@cty", TextCity.Text);
-        obj.cmd.Parameters.AddWithValue("@stt", TextState.Text);
-        obj.ExecuteQueries("Update ManageClients set CompanyName=@cmpny,ClientName=@clint,ClientEmail=@ml,ClientPass=@pas,ContactNo=@No,AddressLine1=@Add1,AddressLine2=@Add2,City=@cty,State=@stt where id='" + Convert.ToInt32(TextBox1.Text) + "'");
+    { 
         
-        GridView1.DataBind();
-        reset();
+        Page.Validate("A");
+        if (Page.IsValid)
+        {
+
+            bool chck1 = obj.getdata("select * from ManageClients where id!='" + Convert.ToInt32(TextBox1.Text) + "' and ClientName='" + TextClient.Text + "' ");
+            if (chck1 == true)
+            {
+                LabelErr.Text = "Record already exists! Choose another";
+            }
+            else
+            {
+                obj.cmd.Parameters.AddWithValue("@cmpny", TextCOmpny.Text);
+                obj.cmd.Parameters.AddWithValue("@clint", TextClient.Text);
+                obj.cmd.Parameters.AddWithValue("@ml", TextMail.Text);
+                obj.cmd.Parameters.AddWithValue("@pas", TextPass.Text);
+                obj.cmd.Parameters.AddWithValue("@No", TextNo.Text);
+                obj.cmd.Parameters.AddWithValue("@Add1", TextADd1.Text);
+                obj.cmd.Parameters.AddWithValue("@add2", TextAdd2.Text);
+                obj.cmd.Parameters.AddWithValue("@cty", TextCity.Text);
+                obj.cmd.Parameters.AddWithValue("@stt", TextState.Text);
+                obj.ExecuteQueries("Update ManageClients set CompanyName=@cmpny,ClientName=@clint,ClientEmail=@ml,ClientPass=@pas,ContactNo=@No,AddressLine1=@Add1,AddressLine2=@Add2,City=@cty,State=@stt where id='" + Convert.ToInt32(TextBox1.Text) + "'");
+
+                GridView1.DataBind();
+                reset();
+                LabelErr.Text = "Record updated successfully";
+            }
+        }
+        else
+        {
+            LabelErr.Text = "Fill all the fields";
+        }
+
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
@@ -108,5 +147,34 @@ public partial class ManageCllient : System.Web.UI.Page
             SqlDataSource1.Delete();
             GridView1.DataBind();
         }
+    }
+    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        LabelCount.Text = GridView1.Rows.Count.ToString();
+    }
+    protected void ButtonSearch_Click(object sender, EventArgs e)
+    {
+        string srch = "";
+        if (TextCOmpny.Text != "")
+        {
+            srch = srch + "and CompanyName like '" + TextCOmpny.Text + "%'";
+        }
+        if (TextClient.Text!= "")
+        {
+            srch = srch + "and ClientName like '" + TextClient.Text + "%'";
+        }
+        if (TextMail.Text != "")
+        {
+            srch = srch + "and ClientEmail like '" + TextMail.Text + "%'";
+        }
+        if (TextPass.Text != "")
+        {
+            srch = srch + "and ClientPass like '" + TextPass.Text + "%'";
+        }
+
+
+        SqlDataSource1.SelectCommand = "select * from ManageClients where id>0" + srch;
+
+        GridView1.DataBind();
     }
 }
