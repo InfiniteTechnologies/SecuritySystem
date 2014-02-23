@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ManageGuards.aspx.cs" Inherits="ManageClients" Title="Untitled Page" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
   <script src="jscript/jquery-1.9.1.js"></script>
@@ -106,6 +108,7 @@
     <table width="100%" >
     <tr>
         <td  width="50%" valign="top">
+            <asp:Label ID="LabelErr" runat="server" Text="&nbsp;" ForeColor="#CC0000"></asp:Label>
              <h3 align="left">Please Fill in the form below to add a new Guard
                               </h3>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -116,7 +119,14 @@
             <tr>
                 <td class="cell">Guard Name</td>
                 <td>
-                    <asp:TextBox ID="TextGname" runat="server" CssClass="form-control"></asp:TextBox></td>
+                    <asp:TextBox ID="TextGname" runat="server" CssClass="form-control"></asp:TextBox>
+                    
+                    <cc1:FilteredTextBoxExtender ID="TextGname_FilteredTextBoxExtender" 
+                        runat="server" Enabled="True" TargetControlID="TextGname" FilterType="UppercaseLetters, LowercaseLetters, Custom" ValidChars=" " >
+                    </cc1:FilteredTextBoxExtender>
+                    
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextGname" ValidationGroup="A"></asp:RequiredFieldValidator>
+                    </td>
             </tr>
             
             <tr>
@@ -124,6 +134,7 @@
                 <td>
                     <asp:DropDownList ID="DdlCategory" runat="server" Height="35px" Width="200px">
                     </asp:DropDownList>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="DdlCategory" ValidationGroup="A"></asp:RequiredFieldValidator>
                 </td>
             </tr>
 
@@ -136,75 +147,114 @@
             <tr>
                 <td class="cell">Email Id</td>
                 <td>
-                    <asp:TextBox ID="TextMail" runat="server" CssClass="form-control"></asp:TextBox></td>
+                    <asp:TextBox ID="TextMail" runat="server" CssClass="form-control"></asp:TextBox>
+                      <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+                                ControlToValidate="TextMail" ErrorMessage="Not a valid mail id." 
+                                ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+                                ValidationGroup="A"></asp:RegularExpressionValidator>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextMail" ValidationGroup="A"></asp:RequiredFieldValidator>
+                    </td>
             </tr>
             
                         <tr>
                 <td class="cell">User Id</td>
                 <td>
-                    <asp:TextBox ID="TextUser" runat="server" CssClass="form-control"></asp:TextBox></td>
+                    <asp:TextBox ID="TextUser" runat="server" CssClass="form-control"></asp:TextBox>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextUser" ValidationGroup="A"></asp:RequiredFieldValidator>
+                    </td>
             </tr>
             
                         <tr>
                 <td class="cell">Password</td>
                 <td>
-                    <asp:TextBox ID="TextBoxPass" runat="server" CssClass="form-control"></asp:TextBox></td>
+                    <asp:TextBox ID="TextBoxPass" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBoxPass" ValidationGroup="A"></asp:RequiredFieldValidator>
+                    </td>
             </tr>
             
                         <tr>
                 <td class="cell">Address Line 1</td>
                 <td>
-                    <asp:TextBox ID="Textadd1" runat="server" CssClass="form-control"></asp:TextBox></td>
+                    <asp:TextBox ID="Textadd1" runat="server" CssClass="form-control"></asp:TextBox>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="Textadd1" ValidationGroup="A"></asp:RequiredFieldValidator>
+                    </td>
             </tr>
             
                         <tr>
                 <td class="cell">Address Line 2</td>
                 <td>
-                    <asp:TextBox ID="Textadd2" runat="server" CssClass="form-control"></asp:TextBox></td>
+                    <asp:TextBox ID="Textadd2" runat="server" CssClass="form-control"></asp:TextBox>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="Textadd2" ValidationGroup="A"></asp:RequiredFieldValidator>
+                    </td>
             </tr>
             
                         <tr>
                 <td class="cell">Contact No</td>
                 <td>
-                    <asp:TextBox ID="TextNo" runat="server" CssClass="form-control"></asp:TextBox></td>
+                    <asp:TextBox ID="TextNo" runat="server" CssClass="form-control" MaxLength="10"></asp:TextBox>
+                     <cc1:FilteredTextBoxExtender ID="TextNo_FilteredTextBoxExtender" FilterType="Numbers"
+                        runat="server" Enabled="True" TargetControlID="TextNo">
+                    </cc1:FilteredTextBoxExtender>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="TextNo" ValidationGroup="A"></asp:RequiredFieldValidator>
+                    </td>
             </tr>
             
                         <tr>
                 <td class="cell">City</td>
                 <td>
-                    <asp:TextBox ID="TextCity" runat="server" CssClass="form-control"></asp:TextBox></td>
+                    <asp:TextBox ID="TextCity" runat="server" CssClass="form-control"></asp:TextBox>
+                     <cc1:FilteredTextBoxExtender ID="TextCity_FilteredTextBoxExtender" FilterType="UppercaseLetters, LowercaseLetters, Custom" ValidChars=" "
+                        runat="server" Enabled="True" TargetControlID="TextCity">
+                    </cc1:FilteredTextBoxExtender>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="TextCity" ValidationGroup="A"></asp:RequiredFieldValidator></td>
             </tr>
             
             <tr>
                 <td class="cell">State</td>
                 <td>
-                    <asp:TextBox ID="TextStt" runat="server" CssClass="form-control"></asp:TextBox></td>
+                    <asp:TextBox ID="TextStt" runat="server" CssClass="form-control"></asp:TextBox>
+                     <cc1:FilteredTextBoxExtender ID="TextStt_FilteredTextBoxExtender" FilterType="UppercaseLetters, LowercaseLetters, Custom" ValidChars=" " 
+                        runat="server" Enabled="True" TargetControlID="TextStt">
+                    </cc1:FilteredTextBoxExtender>
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="TextStt" ValidationGroup="A"></asp:RequiredFieldValidator>
+                    </td>
             </tr>
             
             
             <tr>
                 <td class="cell">Upload Photo</td>
                 <td>
-                    <asp:FileUpload ID="FileUpload1" runat="server" onchange="uploadimg();"  /></td>
+                    <asp:FileUpload ID="FileUpload1" runat="server" onchange="uploadimg();"  />
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="FileUpload1" ValidationGroup="A"></asp:RequiredFieldValidator>
+                    </td>
             </tr>
             
             
            <tr>
                 <td class="cell">Id Proof</td>
                 <td>
-                    <asp:DropDownList ID="DropDownList1" runat="server">
+                    <asp:DropDownList ID="DropDownList1" runat="server"  Height="35px" Width="200px">
                         <asp:ListItem Value="0">Select Id Proof</asp:ListItem>
+
                         <asp:ListItem Value="1">Passport</asp:ListItem>
                         <asp:ListItem Value="2">SSN</asp:ListItem>
                         <asp:ListItem Value="3">Driving License</asp:ListItem>
+
+                        <asp:ListItem >Voter Id</asp:ListItem>
+                        <asp:ListItem >Aadhar card</asp:ListItem>
+                        <asp:ListItem >Driving License</asp:ListItem>
+                          <asp:ListItem >PAN Card</asp:ListItem>
+
                     </asp:DropDownList>
+                  <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="DropDownList1" ValidationGroup="A"></asp:RequiredFieldValidator>
                   </td>
             </tr>
             
             <tr>
                 <td class="cell">Enter Id Number</td>
                 <td>
-                    <asp:TextBox ID="TextId" runat="server" CssClass="form-control"></asp:TextBox>   
+                    <asp:TextBox ID="TextId" runat="server" CssClass="form-control"></asp:TextBox> 
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="TextId" ValidationGroup="A"></asp:RequiredFieldValidator>  
                 </td>
             </tr>
             
@@ -215,8 +265,13 @@
                         CssClass="btn btn-warning" onclick="ButtonAdd_Click"/>
                      <asp:Button ID="ButtonUpdate" runat="server" Text="Update" 
                         CssClass="btn btn-warning" onclick="ButtonUpdate_Click"/>
+                    
+                     <asp:Button ID="ButtonSearch" runat="server" Text="Search" 
+                        CssClass="btn btn-warning" onclick="ButtonSearch_Click"/>
+                     
                       <asp:Button ID="ButtonReset" runat="server" Text="Reset" 
                         CssClass="btn btn-warning" onclick="ButtonReset_Click"/>
+                        
                     </td>
             </tr>
              <tr>
@@ -236,6 +291,8 @@
         <asp:PostBackTrigger ControlID="ButtonAdd" />
          <asp:PostBackTrigger ControlID="ButtonUpdate" />
          <asp:PostBackTrigger ControlID="ButtonReset" />
+         <asp:PostBackTrigger ControlID="ButtonSearch" />
+         
     </Triggers>
          
        </asp:UpdatePanel>
@@ -250,14 +307,24 @@
                  BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" 
                  CellPadding="3" DataKeyNames="id" DataSourceID="SqlDataSource1" 
                  ForeColor="Black" GridLines="Vertical" onrowcreated="GridView1_RowCreated" 
-                 onrowcommand="GridView1_RowCommand">
+                 onrowcommand="GridView1_RowCommand" 
+                 onrowdatabound="GridView1_RowDataBound">
                  <Columns>
-                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" 
-                         SortExpression="id" />
+                        <asp:TemplateField HeaderStyle-CssClass="hidecls" ItemStyle-CssClass="hidecls">
+                            <ItemTemplate >
+                                <%# Eval("id") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                     <asp:TemplateField HeaderText="Sr No" SortExpression="id">
+                         <ItemTemplate>
+                               <asp:Label ID="LabelSrNo" runat="server" Text="<%#Container.DataItemIndex+1 %>"></asp:Label>
+                         </ItemTemplate>
+                         <EditItemTemplate>
+                             <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
+                         </EditItemTemplate>
+                     </asp:TemplateField>
                      <asp:BoundField DataField="GuardName" HeaderText="GuardName" 
                          SortExpression="GuardName" />
-                     <asp:BoundField DataField="F_CategoryId" HeaderText="F_CategoryId" 
-                         SortExpression="F_CategoryId" />
                      <asp:BoundField DataField="GuardEmail" HeaderText="GuardEmail" 
                          SortExpression="GuardEmail" />
                      <asp:BoundField DataField="City" HeaderText="City" SortExpression="City" />
@@ -269,6 +336,9 @@
                                           <asp:ImageButton ID="ImageButton1" runat="server" 
                                               CommandArgument='<%# Eval("id") %>' CommandName="remove" 
                                               ImageUrl="~/images/deleterow.png" />
+                                              
+                                          <cc1:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server"  ConfirmText="Are you sure you want to delete this record?" TargetControlID="ImageButton1">
+                                          </cc1:ConfirmButtonExtender>
                                       </ItemTemplate>
                                   </asp:TemplateField>
                          
@@ -285,6 +355,10 @@
              <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                  ConnectionString="<%$ ConnectionStrings:SecurityConnectionString %>" 
                  SelectCommand="SELECT * FROM [ManageGuards]"></asp:SqlDataSource>
+                 
+                 <br />
+                 Total Guards:&nbsp;
+             <asp:Label ID="LabelCount" runat="server" Text=""></asp:Label>
          </td>  
      </tr>
      </table>                   

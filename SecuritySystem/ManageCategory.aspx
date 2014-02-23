@@ -1,12 +1,13 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ManageCategory.aspx.cs" Inherits="ManageCategory" Title="Untitled Page" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 
   <script src="jscript/jquery-1.9.1.js"></script>
     <script src="jscript/jquery.contextMenu.js" type="text/javascript"></script>
 		<link href="jscript/jquery.contextMenu.css" rel="stylesheet" type="text/css" />
-
-
+		
     <script type="text/javascript">
         var SelectedRow = null;
         var SelectedRowIndex = null;
@@ -86,24 +87,28 @@
     <h2>Manage Categories</h2>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder3" Runat="Server">
+  <asp:Label ID="LabelErr" runat="server" ForeColor="#CC0000" ></asp:Label>
     <table width="100%" >
     <tr>
         <td  width="50%" valign="top">
-        
-             <h3 align="left">
-                                  Please Fill in the form below to add a new category
-                              </h3>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+          <h3 align="left">Fill the form below to add a new category</h3>
+   
+    
+           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
             
         <table cellpadding="5px" cellspacing="5px">
                           <caption>
-                             
+                            
                               <tr>
                                   <td class="cell">
                                       Enter Category</td>
                                   <td>
                                       <asp:TextBox ID="TextCategory" runat="server" CssClass="form-control"></asp:TextBox>
+                                      <cc1:FilteredTextBoxExtender ID="TextCategory_FilteredTextBoxExtender" FilterType="UppercaseLetters, LowercaseLetters, Custom" ValidChars=" " 
+                                          runat="server" Enabled="True" TargetControlID="TextCategory">
+                                      </cc1:FilteredTextBoxExtender>
+                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ValidationGroup="A" ControlToValidate="TextCategory"></asp:RequiredFieldValidator>
                                   </td>
                               </tr>
                               <tr>
@@ -113,7 +118,10 @@
                                       <asp:Button ID="ButtonAdd" runat="server" CssClass="btn btn-warning" 
                                           onclick="ButtonAdd_Click" Text="Submit" />
                                            <asp:Button ID="ButtonUpdate" runat="server" CssClass="btn btn-warning" 
-                                           Text="Update" onclick="ButtonUpdate_Click" />
+                                           Text="Update" onclick="ButtonUpdate_Click" Enabled="false"/>
+                                           
+                                               <asp:Button ID="ButtonSearch" runat="server" Text="Search" 
+                        CssClass="btn btn-warning" onclick="ButtonSearch_Click"/>
                                            <asp:Button ID="ButtonReset" runat="server" CssClass="btn btn-warning" 
                                            Text="Reset" onclick="ButtonReset_Click" />
                                   </td>
@@ -127,6 +135,7 @@
                                       <asp:TextBox ID="TextBox1" runat="server" Style="display: none;"></asp:TextBox>
                                   </td>
                               </tr>
+                           
                           </caption>
                       </table>
             </ContentTemplate>
@@ -134,6 +143,8 @@
                     <asp:PostBackTrigger ControlID="ButtonAdd" />
                     <asp:PostBackTrigger ControlID="ButtonUpdate" />
                     <asp:PostBackTrigger ControlID="ButtonReset" />
+                    <asp:PostBackTrigger ControlID="ButtonSearch" />
+                    
                 </Triggers>
             </asp:UpdatePanel>
         </td>
@@ -143,15 +154,26 @@
                                   List of existing categories:
                               </h3>
                           <asp:GridView ID="GridView1" runat="server" Width="100%" 
-                              AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" 
+                              AutoGenerateColumns="False" BackColor="#CCCCCC" BorderColor="#999999" AlternatingRowStyle-BackColor="ActiveCaption" 
                               BorderStyle="Solid" BorderWidth="3px" CellPadding="4" CellSpacing="2" 
                               DataKeyNames="id" DataSourceID="SqlDataSource1" ForeColor="Black" 
                               onrowcommand="GridView1_RowCommand" 
-                          onrowcreated="GridView1_RowCreated">
+                          onrowcreated="GridView1_RowCreated" onrowdatabound="GridView1_RowDataBound">
                               <RowStyle BackColor="White" />
                               <Columns>
-                                  <asp:BoundField DataField="id" HeaderText="Sr No" InsertVisible="False" 
-                                      ReadOnly="True" SortExpression="id" />
+                               <asp:TemplateField HeaderStyle-CssClass="hidecls" ItemStyle-CssClass="hidecls">
+                            <ItemTemplate >
+                                <%# Eval("id") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                                  <asp:TemplateField HeaderText="Sr No" InsertVisible="False" SortExpression="id">
+                                      <ItemTemplate>
+                                          <asp:Label ID="LabelSrNo" runat="server" Text="<%#Container.DataItemIndex+1 %>"></asp:Label>
+                                      </ItemTemplate>
+                                      <EditItemTemplate>
+                                          <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
+                                      </EditItemTemplate>
+                                  </asp:TemplateField>
                                   <asp:BoundField DataField="categoryName" HeaderText="Category Name" 
                                       SortExpression="categoryName" />
                                   <asp:TemplateField HeaderText="Remove">
@@ -159,6 +181,9 @@
                                           <asp:ImageButton ID="ImageButton1" runat="server" 
                                               CommandArgument='<%# Eval("id") %>' CommandName="remove" 
                                               ImageUrl="~/images/deleterow.png" />
+                                              
+                                          <cc1:ConfirmButtonExtender ID="ConfirmButtonExtender1" runat="server" ConfirmText="Are you sure you want to delete this record?" TargetControlID="ImageButton1">
+                                          </cc1:ConfirmButtonExtender>
                                       </ItemTemplate>
                                   </asp:TemplateField>
                               </Columns>
@@ -173,6 +198,9 @@
                           <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                               ConnectionString="<%$ ConnectionStrings:SecurityConnectionString %>" 
                               SelectCommand="SELECT * FROM [CategoryMaster]"></asp:SqlDataSource>
+                        <br />
+                 Total Categories:&nbsp;
+             <asp:Label ID="LabelCount" runat="server" Text=""></asp:Label>       
                       </td>
      
           
